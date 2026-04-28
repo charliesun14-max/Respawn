@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Respawn — Mental Wellness for Gamers</title>
+  <meta name="description" content="Talk to a certified wellness coach while you play. No awkward offices. Just real support, in your element." />
+  <meta property="og:title" content="Respawn — Mental Wellness for Gamers" />
+  <meta property="og:description" content="Talk to a certified wellness coach while you play. No awkward offices. Just real support, in your element." />
+  <meta property="og:url" content="https://tryrespawn.com" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --green: #1D9E75;
+      --green-dark: #0F6E56;
+      --green-deeper: #085041;
+      --green-light: #E1F5EE;
+      --green-mid: #5DCAA5;
+      --green-pale: #9FE1CB;
+      --text: #111;
+      --text-muted: #555;
+      --text-faint: #888;
+      --border: rgba(0,0,0,0.1);
+      --bg: #fff;
+      --bg-secondary: #f7f7f5;
+      --radius: 12px;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --text: #f0f0ee;
+        --text-muted: #aaa;
+        --text-faint: #666;
+        --border: rgba(255,255,255,0.1);
+        --bg: #111;
+        --bg-secondary: #1a1a18;
+        --green-light: #0a2e20;
+      }
+    }
+
+    html { scroll-behavior: smooth; }
+    body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; }
+
+    /* NAV */
+    nav {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 1.2rem 2rem; border-bottom: 1px solid var(--border);
+      position: sticky; top: 0; background: var(--bg); z-index: 100;
+    }
+    .logo { font-family: 'Syne', sans-serif; font-weight: 800; font-size: 20px; letter-spacing: -0.5px; text-decoration: none; color: var(--text); }
+    .logo span { color: var(--green); }
+    .nav-cta {
+      background: var(--green); color: white; border: none; border-radius: 8px;
+      padding: 9px 20px; font-size: 13px; font-family: 'DM Sans', sans-serif;
+      font-weight: 500; cursor: pointer; text-decoration: none;
+    }
+
+    /* HERO */
+    .hero {
+      padding: 5rem 2rem 4rem; max-width: 700px; margin: 0 auto; text-align: center;
+    }
+    .tag {
+      display: inline-block; background: var(--green-light); color: var(--green-dark);
+      font-size: 12px; font-weight: 500; letter-spacing: 0.05em;
+      padding: 5px 16px; border-radius: 999px; margin-bottom: 1.5rem;
+    }
+    h1 {
+      font-family: 'Syne', sans-serif; font-weight: 800;
+      font-size: clamp(34px, 7vw, 56px); line-height: 1.06;
+      letter-spacing: -2px; margin-bottom: 1.25rem;
+    }
+    h1 em { font-style: normal; color: var(--green); }
+    .hero-sub {
+      font-size: 18px; line-height: 1.65; color: var(--text-muted);
+      max-width: 480px; margin: 0 auto 2.5rem;
+    }
+
+    /* FORM */
+    .form-wrap { max-width: 420px; margin: 0 auto; }
+    .form-row { display: flex; gap: 8px; margin-bottom: 0.75rem; }
+    .email-input {
+      flex: 1; padding: 13px 16px; border-radius: 10px;
+      border: 1px solid var(--border); background: var(--bg);
+      color: var(--text); font-family: 'DM Sans', sans-serif; font-size: 14px;
+      outline: none; transition: border-color 0.2s;
+    }
+    .email-input:focus { border-color: var(--green); box-shadow: 0 0 0 3px rgba(29,158,117,0.12); }
+    .email-input.error { border-color: #e24b4a; }
+    .submit-btn {
+      background: var(--green); color: white; border: none; border-radius: 10px;
+      padding: 13px 22px; font-family: 'DM Sans', sans-serif; font-size: 14px;
+      font-weight: 500; cursor: pointer; white-space: nowrap; transition: background 0.2s;
+    }
+    .submit-btn:hover { background: var(--green-dark); }
+    .form-hint { font-size: 12px; color: var(--text-faint); text-align: center; }
+    .success-msg {
+      display: none; font-size: 14px; color: var(--green-dark);
+      font-weight: 500; text-align: center; margin-bottom: 0.5rem;
+    }
+
+    /* SOCIAL PROOF */
+    .social-proof {
+      display: flex; align-items: center; justify-content: center;
+      gap: 10px; margin-top: 2.5rem;
+    }
+    .avatars { display: flex; }
+    .av {
+      width: 30px; height: 30px; border-radius: 50%;
+      border: 2px solid var(--bg); margin-left: -7px;
+      font-size: 10px; font-weight: 500;
+      display: flex; align-items: center; justify-content: center; color: white;
+    }
+    .av:first-child { margin-left: 0; }
+    .sp-text { font-size: 13px; color: var(--text-muted); }
+    .sp-text strong { color: var(--text); font-weight: 500; }
+
+    hr { border: none; border-top: 1px solid var(--border); margin: 0 2rem; }
+
+    /* SECTIONS */
+    section { padding: 4rem 2rem; max-width: 700px; margin: 0 auto; }
+    .section-label {
+      font-size: 11px; letter-spacing: 0.1em; font-weight: 500;
+      color: var(--text-faint); margin-bottom: 0.5rem; text-transform: uppercase;
+    }
+    .section-h2 {
+      font-family: 'Syne', sans-serif; font-weight: 700;
+      font-size: 28px; letter-spacing: -0.5px; margin-bottom: 2.5rem;
+    }
+
+    /* STEPS */
+    .steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+    @media (max-width: 600px) { .steps { grid-template-columns: 1fr; } }
+    .step { background: var(--bg-secondary); border-radius: var(--radius); padding: 1.25rem; }
+    .step-num {
+      width: 30px; height: 30px; border-radius: 50%;
+      background: var(--green-light); color: var(--green-dark);
+      font-size: 13px; font-weight: 500;
+      display: flex; align-items: center; justify-content: center; margin-bottom: 0.75rem;
+    }
+    .step h3 { font-family: 'Syne', sans-serif; font-size: 15px; font-weight: 700; margin-bottom: 0.4rem; }
+    .step p { font-size: 13px; line-height: 1.6; color: var(--text-muted); }
+
+    /* FEATURE CARDS */
+    .cards { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    @media (max-width: 600px) { .cards { grid-template-columns: 1fr; } }
+    .card {
+      background: var(--bg); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 1.25rem;
+    }
+    .card-icon {
+      width: 38px; height: 38px; border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      margin-bottom: 0.75rem; font-size: 18px;
+    }
+    .card h3 { font-family: 'Syne', sans-serif; font-size: 15px; font-weight: 700; margin-bottom: 0.4rem; }
+    .card p { font-size: 13px; color: var(--text-muted); line-height: 1.6; }
+
+    /* PRICING */
+    .pricing { text-align: center; }
+    .price-card {
+      background: var(--bg-secondary); border-radius: var(--radius);
+      padding: 2.5rem 2rem; margin-top: 2rem; display: inline-block; width: 100%;
+    }
+    .price-amount {
+      font-family: 'Syne', sans-serif; font-weight: 800;
+      font-size: 52px; letter-spacing: -2px; color: var(--green);
+    }
+    .price-amount sup { font-size: 26px; vertical-align: super; }
+    .price-sub { font-size: 15px; color: var(--text-muted); margin: 0.25rem 0 1.5rem; }
+    .price-details { display: flex; justify-content: center; gap: 2.5rem; flex-wrap: wrap; }
+    .price-detail { font-size: 13px; color: var(--text-muted); }
+    .price-detail strong { display: block; font-size: 15px; font-weight: 500; color: var(--text); margin-bottom: 2px; }
+
+    /* CTA BLOCK */
+    .cta-block {
+      margin: 2rem 2rem 3rem; background: var(--green-deeper);
+      border-radius: 20px; padding: 3.5rem 2rem; text-align: center;
+    }
+    .cta-block h2 {
+      font-family: 'Syne', sans-serif; font-weight: 800;
+      font-size: 32px; letter-spacing: -1px; color: var(--green-pale); margin-bottom: 0.75rem;
+    }
+    .cta-block p { color: var(--green-mid); font-size: 16px; margin-bottom: 2rem; }
+    .cta-form { display: flex; gap: 8px; max-width: 400px; margin: 0 auto; }
+    .cta-input {
+      flex: 1; padding: 13px 16px; border-radius: 10px;
+      border: 1px solid rgba(29,158,117,0.4);
+      background: rgba(255,255,255,0.07); color: white;
+      font-family: 'DM Sans', sans-serif; font-size: 14px; outline: none;
+    }
+    .cta-input::placeholder { color: rgba(255,255,255,0.35); }
+    .cta-input:focus { border-color: var(--green-mid); }
+    .cta-btn {
+      background: var(--green); color: white; border: none; border-radius: 10px;
+      padding: 13px 22px; font-family: 'DM Sans', sans-serif;
+      font-size: 14px; font-weight: 500; cursor: pointer;
+    }
+    .cta-success { display: none; font-size: 14px; color: var(--green-pale); margin-top: 1rem; font-weight: 500; }
+
+    /* FOOTER */
+    footer {
+      padding: 1.5rem 2rem; border-top: 1px solid var(--border);
+      display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;
+    }
+    .footer-logo { font-family: 'Syne', sans-serif; font-weight: 800; font-size: 16px; }
+    .footer-logo span { color: var(--green); }
+    footer p { font-size: 12px; color: var(--text-faint); }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a class="logo" href="#">re<span>spawn</span></a>
+    <a class="nav-cta" href="#waitlist">Join waitlist</a>
+  </nav>
+
+  <div class="hero" id="waitlist">
+    <div class="tag">mental wellness for gamers</div>
+    <h1>Level up your<br><em>mental game</em></h1>
+    <p class="hero-sub">Talk to a certified wellness coach while you play. No awkward offices. No uncomfortable silences. Just real support, in your element.</p>
+
+    <div class="form-wrap">
+      <div class="success-msg" id="hero-success">You're on the list — we'll be in touch soon.</div>
+      <div class="form-row">
+        <input id="hero-email" class="email-input" type="email" placeholder="your@email.com" />
+        <button class="submit-btn" onclick="handleSignup('hero-email','hero-success')">Join waitlist</button>
+      </div>
+      <p class="form-hint">Free to join. No spam. Unsubscribe anytime.</p>
+    </div>
+
+    <div class="social-proof">
+      <div class="avatars">
+        <div class="av" style="background:#1D9E75;">JK</div>
+        <div class="av" style="background:#534AB7;">ML</div>
+        <div class="av" style="background:#D85A30;">TS</div>
+        <div class="av" style="background:#185FA5;">RQ</div>
+      </div>
+      <p class="sp-text"><strong>240+ gamers</strong> already on the waitlist</p>
+    </div>
+  </div>
+
+  <hr />
+
+  <section>
+    <p class="section-label">how it works</p>
+    <h2 class="section-h2">Support that fits your world</h2>
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">1</div>
+        <h3>Get matched</h3>
+        <p>Tell us your games, your goals, and what's on your mind. We find your coach.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <h3>Play together</h3>
+        <p>Jump into a session in-game or on voice. Talk while you play, or after a round.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <h3>Build habits</h3>
+        <p>Track your mood, get tools that stick, and check in as often as you need.</p>
+      </div>
+    </div>
+  </section>
+
+  <hr />
+
+  <section>
+    <p class="section-label">why respawn</p>
+    <h2 class="section-h2">Built for people who'd<br>never step into an office</h2>
+    <div class="cards">
+      <div class="card">
+        <div class="card-icon" style="background:#E1F5EE;">🎮</div>
+        <h3>In your element</h3>
+        <p>No waiting rooms. Sessions happen where you're most comfortable.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon" style="background:#EEEDFE;">🧠</div>
+        <h3>Gamer-fluent coaches</h3>
+        <p>Coaches who actually play — no explaining what a raid or ranked anxiety means.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon" style="background:#FAECE7;">🤝</div>
+        <h3>No clinical pressure</h3>
+        <p>Wellness coaching, not therapy. Low stakes, high impact.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon" style="background:#E6F1FB;">🔒</div>
+        <h3>Private by default</h3>
+        <p>Everything stays between you and your coach. Always.</p>
+      </div>
+    </div>
+  </section>
+
+  <hr />
+
+  <section class="pricing">
+    <p class="section-label">pricing</p>
+    <h2 class="section-h2">Pay per session. No subscriptions.</h2>
+    <div class="price-card">
+      <div class="price-amount"><sup>$</sup>60</div>
+      <p class="price-sub">per 50-minute session</p>
+      <div class="price-details">
+        <div class="price-detail"><strong>Book anytime</strong>No recurring fees</div>
+        <div class="price-detail"><strong>Cancel freely</strong>24hr notice</div>
+        <div class="price-detail"><strong>Your coach</strong>Consistent match</div>
+      </div>
+    </div>
+  </section>
+
+  <hr />
+
+  <div class="cta-block">
+    <h2>Ready to respawn?</h2>
+    <p>Join the waitlist and be first to access coaches when we launch.</p>
+    <div class="cta-form">
+      <input id="cta-email" class="cta-input" type="email" placeholder="your@email.com" />
+      <button class="cta-btn" onclick="handleSignup('cta-email','cta-success')">Join</button>
+    </div>
+    <div class="cta-success" id="cta-success">You're on the list!</div>
+  </div>
+
+  <footer>
+    <div class="footer-logo">re<span>spawn</span></div>
+    <p>© 2026 · Made for gamers who want more</p>
+  </footer>
+
+  <script>
+    const TALLY_URL = "https://tally.so/r/kd0xPr";
+
+    function handleSignup(inputId, successId) {
+      const input = document.getElementById(inputId);
+      const success = document.getElementById(successId);
+      const email = input.value.trim();
+
+      if (!email || !email.includes('@') || !email.includes('.')) {
+        input.classList.add('error');
+        input.focus();
+        return;
+      }
+
+      input.classList.remove('error');
+
+      fetch(TALLY_URL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email })
+      }).catch(() => {});
+
+      success.style.display = 'block';
+      input.value = '';
+
+      window.open(TALLY_URL + '?email=' + encodeURIComponent(email), '_blank');
+    }
+
+    document.querySelectorAll('.email-input, .cta-input').forEach(input => {
+      input.addEventListener('keydown', e => {
+        if (e.key === 'Enter') {
+          const id = input.id;
+          const successId = id.replace('email', 'success');
+          handleSignup(id, successId);
+        }
+      });
+      input.addEventListener('input', () => input.classList.remove('error'));
+    });
+  </script>
+
+</body>
+</html>
