@@ -215,7 +215,7 @@
 
   <nav>
     <a class="logo" href="#">re<span>spawn</span></a>
-    <a class="nav-cta" href="#waitlist">Join waitlist</a>
+    <button data-tally-open="kd0xPr" data-tally-layout="modal" data-tally-auto-close="3000" class="nav-cta">Join waitlist</button>
   </nav>
 
   <div class="hero" id="waitlist">
@@ -224,12 +224,8 @@
     <p class="hero-sub">Talk to a certified wellness coach while you play. No awkward offices. No uncomfortable silences. Just real support, in your element.</p>
 
     <div class="form-wrap">
-      <div class="success-msg" id="hero-success">You're on the list — we'll be in touch soon.</div>
-      <div class="form-row">
-        <input id="hero-email" class="email-input" type="email" placeholder="your@email.com" />
-        <button class="submit-btn" onclick="handleSignup('hero-email','hero-success')">Join waitlist</button>
-      </div>
-      <p class="form-hint">Free to join. No spam. Unsubscribe anytime.</p>
+      <button data-tally-open="kd0xPr" data-tally-layout="modal" data-tally-auto-close="3000" class="submit-btn">Join waitlist</button>
+      <p class="form-hint" style="margin-top:0.75rem;">Free to join. No spam. Unsubscribe anytime.</p>
     </div>
 
     <div class="social-proof">
@@ -317,11 +313,7 @@
   <div class="cta-block">
     <h2>Ready to respawn?</h2>
     <p>Join the waitlist and be first to access coaches when we launch.</p>
-    <div class="cta-form">
-      <input id="cta-email" class="cta-input" type="email" placeholder="your@email.com" />
-      <button class="cta-btn" onclick="handleSignup('cta-email','cta-success')">Join</button>
-    </div>
-    <div class="cta-success" id="cta-success">You're on the list!</div>
+    <button data-tally-open="kd0xPr" data-tally-layout="modal" data-tally-auto-close="3000" class="cta-btn">Join waitlist</button>
   </div>
 
   <footer>
@@ -329,45 +321,7 @@
     <p>© 2026 · Made for gamers who want more</p>
   </footer>
 
-  <script>
-    const TALLY_URL = "https://tally.so/r/kd0xPr";
-
-    function handleSignup(inputId, successId) {
-      const input = document.getElementById(inputId);
-      const success = document.getElementById(successId);
-      const email = input.value.trim();
-
-      if (!email || !email.includes('@') || !email.includes('.')) {
-        input.classList.add('error');
-        input.focus();
-        return;
-      }
-
-      input.classList.remove('error');
-
-      fetch(TALLY_URL, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email })
-      }).catch(() => {});
-
-      success.style.display = 'block';
-      input.value = '';
-
-      window.open(TALLY_URL + '?email=' + encodeURIComponent(email), '_blank');
-    }
-
-    document.querySelectorAll('.email-input, .cta-input').forEach(input => {
-      input.addEventListener('keydown', e => {
-        if (e.key === 'Enter') {
-          const id = input.id;
-          const successId = id.replace('email', 'success');
-          handleSignup(id, successId);
-        }
-      });
-      input.addEventListener('input', () => input.classList.remove('error'));
-    });
-  </script>
+  <script async src="https://tally.so/widgets/embed.js"></script>
 
 </body>
 </html>
